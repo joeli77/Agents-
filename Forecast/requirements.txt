@@ -2,9 +2,10 @@ streamlit
 pandas
 numpy
 matplotlib
+seaborn
+python-dotenv
 prophet
 openpyxl
-python-dotenv
 groq
-plotly  # <-- Add this line for interactive charts (optional)
+
 
