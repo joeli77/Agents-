@@ -73,6 +73,25 @@ if uploaded_file:
     prompt = f"""
     You are the Head of FP&A at a SaaS company. Your task is to analyze the revenue forecast output below and provide:
     - Key insights about the trend.
-    - Any seasonality
+    - Any seasonality or anomalies observed.
+    - A summary fit for a CFO with clear business language.
+    - Suggestions on revenue optimization.
 
+    Here is the forecast data:
+    {data_for_ai}
+    """
 
+    response = client.chat.completions.create(
+        messages=[
+            {"role": "system", "content": "You are a financial planning and analysis (FP&A) expert, specializing in SaaS companies."},
+            {"role": "user", "content": prompt}
+        ],
+        model="llama3-8b-8192",
+    )
+
+    ai_commentary = response.choices[0].message.content
+    st.markdown('<div class="analysis-container">', unsafe_allow_html=True)
+    st.write(ai_commentary)
+    st.markdown('</div>', unsafe_allow_html=True)
+else:
+    st.info("📁 Please upload an Excel file to begin forecasting.")
