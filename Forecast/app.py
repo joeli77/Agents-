@@ -1,7 +1,11 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
+fig1 = plot_plotly(model, forecast)
+st.plotly_chart(fig1)
+
+fig2 = plot_components_plotly(model, forecast)
+st.plotly_chart(fig2)
 from prophet import Prophet
 from groq import Groq
 import os
